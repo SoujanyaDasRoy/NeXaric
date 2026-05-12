@@ -16,7 +16,10 @@ export function ContactFormSection() {
   };
 
   return (
-    <section className="bg-[linear-gradient(180deg,#ffffff_0%,#f7faff_100%)] px-5 py-16 text-white sm:px-6 sm:py-20 lg:px-8">
+    <section
+      id="contact-form"
+      className="scroll-mt-24 bg-[linear-gradient(180deg,#ffffff_0%,#f7faff_100%)] px-5 py-16 text-white sm:px-6 sm:py-20 lg:px-8"
+    >
       <motion.div
         initial={{ opacity: 0, y: 22 }}
         whileInView={{ opacity: 1, y: 0 }}

@@ -14,7 +14,7 @@ const navLinks = [
   { label: "Services", href: "/#services",  scrollTo: "services" as const },
   { label: "About", href: "/about" },
   { label: "Work",     href: "/work" },
-  { label: "Contact",  href: "/contact" },
+  { label: "Contact",  href: "/#contact-form", scrollTo: "contact" as const },
 ];
 
 export function Navbar({ className }: { className?: string }) {
@@ -36,6 +36,15 @@ export function Navbar({ className }: { className?: string }) {
         document.getElementById("services")?.scrollIntoView({ behavior: "smooth" });
       } else {
         router.push("/#services");
+      }
+      return;
+    }
+    if (link.scrollTo === "contact") {
+      e.preventDefault();
+      if (pathname === "/") {
+        document.getElementById("contact-form")?.scrollIntoView({ behavior: "smooth" });
+      } else {
+        router.push("/#contact-form");
       }
       return;
     }
@@ -99,7 +108,8 @@ export function Navbar({ className }: { className?: string }) {
           className="flex flex-1 items-center justify-end gap-2"
         >
           <Link
-            href="/contact"
+            href="/#contact-form"
+            onClick={(e) => handleNavClick(e, { label: "Contact", href: "/#contact-form", scrollTo: "contact" })}
             className="hidden rounded-full bg-black px-5 py-2.5 text-sm font-medium text-white transition-colors duration-300 hover:bg-[#5997ff] hover:text-white sm:inline-flex"
           >
             Get a quote
@@ -135,8 +145,8 @@ export function Navbar({ className }: { className?: string }) {
                 </Link>
               ))}
               <Link
-                href="/contact"
-                onClick={() => setIsMenuOpen(false)}
+                href="/#contact-form"
+                onClick={(e) => handleNavClick(e, { label: "Contact", href: "/#contact-form", scrollTo: "contact" })}
                 className="mt-1 inline-flex h-11 items-center justify-center rounded-full bg-black px-4 text-sm font-semibold text-white transition-colors hover:bg-[#5997ff]"
               >
                 Get a quote
